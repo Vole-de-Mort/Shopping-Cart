@@ -6,19 +6,22 @@ import Shop from './Pages/Shop';
 import Cart from './component/Cart';
 import NavBar from './component/NavBar';
 import ErrorPage from './component/ErrorPage';
+import { CartProvider } from './context/CartContext';
 const App = () => {
   return (
-    <React.StrictMode>
-      <Router>
-        <NavBar />
-        <Routes>
-          <Route path='/' Component={HomePage} />
-          <Route path='/shop' Component={Shop}/>
-          <Route path='/cart' Component={Cart}/>
-          <Route path='*' Component={ErrorPage} />
-        </Routes>
-      </Router>
-    </React.StrictMode>
+    <CartProvider>
+      <React.StrictMode>
+        <Router>
+          <NavBar />
+          <Routes>
+            <Route path='/' Component={HomePage} />
+            <Route path='/shop' Component={Shop} />
+            <Route path='/cart' Component={Cart} />
+            <Route path='*' Component={ErrorPage} />
+          </Routes>
+        </Router>
+      </React.StrictMode>
+    </CartProvider>
   );
 };
 
