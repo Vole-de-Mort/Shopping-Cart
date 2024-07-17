@@ -2,7 +2,6 @@ import '../styles/NavBar.css';
 import PropTypes from 'prop-types';
 
 export default function Products(props) {
-  console.log(props.product);
   const produit = props.product;
 
   const handleClick = (produit) =>{

@@ -14,11 +14,15 @@ export const CartProvider = ({ children }) => {
     IncreasingPieceNumber((q) => q + 1);
   };
 
+  const removeFromCart = (productId) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+    IncreasingPieceNumber((q) => q - 1);
+  };
+
   // athi lazsemha trajja3 a function for cleaning the cart
   // and a function for removing item's from the cart
-  // and a function for updating the quatinty ;
   return (
-    <CartContext.Provider value={{ cart, addToCart, pieceNumber }}>
+    <CartContext.Provider value={{ cart, addToCart, pieceNumber, removeFromCart }}>
       {children}
     </CartContext.Provider>
   );
