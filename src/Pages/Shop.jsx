@@ -5,7 +5,7 @@ import { CartContext } from '../context/CartContext';
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, existingProduct } = useContext(CartContext);
 
   useEffect(() => {
     // Fetch products from external API
@@ -21,14 +21,19 @@ const Shop = () => {
     return <div className='loading'>Loading ...</div>;
   }
   console.log(products);
-
+  if (existingProduct) {
+    console.log('helloworld');
+    //class should be added for coloring purposes
+  }
   return (
     <>
       <div className='shop'>
         <h1>Shop</h1>
         <div className='products'>
           {products.map((product, id) => {
-            return <Products key={id} product={products[id]} addToCart={addToCart}/>;
+            return (
+              <Products key={id} product={products[id]} addToCart={addToCart} />
+            );
           })}
         </div>
         <Link to='/'>Back Home</Link>

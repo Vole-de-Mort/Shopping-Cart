@@ -8,10 +8,18 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [pieceNumber, IncreasingPieceNumber] = useState(0);
+  const [existingProduct, setExiste] = useState(false);
 
   const addToCart = (product) => {
-    setCart((prevCart) => [...prevCart, product]);
-    IncreasingPieceNumber((q) => q + 1);
+    const existe = cart.find((item) => item.id === product.id);
+    if (existe) {
+      console.log('quantity should increase');
+      setExiste(true);
+    } else {
+      console.log('Product added');
+      setCart((prevCart) => [...prevCart, product]);
+      IncreasingPieceNumber((q) => q + 1);
+    }
   };
 
   const removeFromCart = (productId) => {
@@ -19,10 +27,22 @@ export const CartProvider = ({ children }) => {
     IncreasingPieceNumber((q) => q - 1);
   };
 
-  // athi lazsemha trajja3 a function for cleaning the cart
-  // and a function for removing item's from the cart
+  const cleanCart = () => {
+    setCart([]);
+    IncreasingPieceNumber(0);
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, pieceNumber, removeFromCart }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        pieceNumber,
+        removeFromCart,
+        existingProduct,
+        cleanCart,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
