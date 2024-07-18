@@ -1,10 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import ShoppingBtn from '../component/ShoppingBtn';
 
 const HomePage = () => {
   return (
     <>
-      <h1>Hello from Home Page</h1>
-      <Link to='/shop'>Go Shopping Now !</Link>
+    
+      <div className='container'>
+        <Link to='/shop'>
+          <ShoppingBtn text='Shop Now' />
+        </Link>
+      </div>
     </>
   );
 };

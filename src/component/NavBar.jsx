@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 export default function NavBar() {
   return (
     <div className='navBar'>
-      <div> nome du boutique</div>
+      <div className='name'> 
+        <Link to='/'>ChicWardrobe</Link>
+      </div>
       <div className='links'>
         <ul>
           <li>

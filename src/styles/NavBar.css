@@ -1,47 +1,60 @@
-.navBar{
-  background-color: aqua;
+.navBar {
+  background-color: rgba(173, 163, 163, 0.567);
+  position: sticky;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  height: 8vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 10px; /* Padding for aesthetics */
+  z-index: 2;
+  font-size: 1.5em;
 }
-.links{
-  border: 1px solid red;
-  width: 40%;
+.name>a {
+  font-size: 1.5em;
+  font-weight: 700;
+  text-decoration: none;
+  color: black;
 }
-ul{
+ul {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-end;
+  gap: 1.25em;
   margin: 0;
   padding: 0;
-}
-ul{
   list-style: none;
+  font-size: 1.1em;
 }
-a{
+.links li > a {
   text-decoration: none;
+  color: black;
+  transition: color 0.3s ease;
 }
-a:hover{
+.links li > a:hover {
   text-decoration: underline;
+  color: rgb(50, 49, 49); 
 }
 
 /* this is concerning component/Products */
-.products{
+.products {
   display: flex;
   flex-wrap: wrap;
-  gap: .5em;
+  gap: 0.5em;
 }
-.produit{
+.produit {
   border: red 1px solid;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 250px;
 }
-img{
+img {
   height: 200px;
   width: 150px;
 }
-.down{
+.down {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -50,19 +63,17 @@ img{
 
 /* this is concerning component/Cart.jsx */
 
-.items{
+.items {
   display: flex;
   flex-direction: column;
-  gap: .3em;
+  gap: 0.3em;
 }
-.item{
+.item {
   border: 1px solid red;
   display: flex;
   flex-direction: column;
-
 }
-.quantity{
+.quantity {
   border: 1px solid black;
   display: flex;
-  
 }

@@ -58,7 +58,7 @@ export default function Cart() {
           return (
             <>
               <div key={item.id} className='item'>
-                <h1>{item.id}</h1>
+                <img src={item.image} alt="" />
 
                 <div className='quantity'>
                   <button
