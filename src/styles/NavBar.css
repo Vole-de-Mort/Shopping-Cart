@@ -1,5 +1,5 @@
 .navBar {
-  background-color: rgba(173, 163, 163, 0.567);
+  background-color: white;
   position: sticky;
   display: flex;
   justify-content: space-around;
@@ -12,13 +12,14 @@
   z-index: 2;
   font-size: 1.5em;
 }
-.name>a {
+.name > a {
   font-size: 1.5em;
   font-weight: 700;
   text-decoration: none;
   color: black;
 }
-ul {
+
+.links ul {
   display: flex;
   justify-content: flex-end;
   gap: 1.25em;
@@ -26,40 +27,36 @@ ul {
   padding: 0;
   list-style: none;
   font-size: 1.1em;
+  color: black;
 }
+
 .links li > a {
+  position: relative;
   text-decoration: none;
   color: black;
-  transition: color 0.3s ease;
+  transition: color 0.1s ease;
 }
+.links li > a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(61, 60, 60, 0.567);
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+
 .links li > a:hover {
-  text-decoration: underline;
-  color: rgb(50, 49, 49); 
+  color: rgba(61, 60, 60, 0.798);
+}
+
+.links li > a:hover::after {
+  opacity: 1;
 }
 
 /* this is concerning component/Products */
-.products {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5em;
-}
-.produit {
-  border: red 1px solid;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 250px;
-}
-img {
-  height: 200px;
-  width: 150px;
-}
-.down {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 80%;
-}
 
 /* this is concerning component/Cart.jsx */
 

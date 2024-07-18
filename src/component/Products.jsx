@@ -1,24 +1,24 @@
-import '../styles/NavBar.css';
+import '../styles/shop.css';
 import PropTypes from 'prop-types';
 
 export default function Products(props) {
   const produit = props.product;
 
-  const handleClick = (produit) =>{
-    props.addToCart(produit)
-  }
+  const handleClick = (produit) => {
+    props.addToCart(produit);
+  };
 
   return (
     <div className='produit'>
-      <img src={produit.image} alt={produit.description} />
-      <div>{produit.title}</div>
-      <div>Rating : {produit.rating.rate} / 10</div>
-      <div>id: {produit.id}</div>
-      <div className='down'>
-        <div>{produit.price} $</div>
-        <button type='button' onClick={() => handleClick(produit)}>
-          Add to the card
-        </button>
+      <div className='produit-image' style={{ backgroundImage: `url(${produit.image})` }}></div>
+      <div className='info'>
+        <div>{produit.title}</div>
+        <div className='down'>
+          <div>{produit.price} $</div>
+          <button type='button' onClick={() => handleClick(produit)}>
+            Add to the card
+          </button>
+        </div>
       </div>
     </div>
   );

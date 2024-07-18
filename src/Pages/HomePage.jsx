@@ -7,7 +7,7 @@ const HomePage = () => {
     
       <div className='container'>
         <Link to='/shop'>
-          <ShoppingBtn text='Shop Now' />
+          <ShoppingBtn text='Shop Now' Class='shoppingBtn'/>
         </Link>
       </div>
     </>
