@@ -11,7 +11,7 @@
   padding: 10px; /* Padding for aesthetics */
   z-index: 2;
   font-size: 1.5em;
-   border-bottom: 2px solid gray;
+  border-bottom: 2px solid gray;
 }
 .name > a {
   font-size: 1.5em;
@@ -55,4 +55,15 @@
 
 .links li > a:hover::after {
   opacity: 1;
+}
+@media (max-width: 768px) {
+  .navBar {
+    padding: 0;
+  }
+  .name {
+    display: none;
+  }
+  .links ul {
+    font-size: 1em;
+  }
 }

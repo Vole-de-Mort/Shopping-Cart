@@ -63,7 +63,7 @@
   font-weight: 600;
 }
 .backHomeBtn {
-  padding: .5em;
+  padding: 0.5em;
   font-size: 1.8em;
   font-weight: 600;
   border: 1px solid black;
@@ -76,13 +76,29 @@
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  
 }
-.backHomeBtn:hover { 
+.backHomeBtn:hover {
   background-color: #383838;
 }
-.shop > a{
+.shop > a {
   display: grid;
   text-decoration: none;
   margin-bottom: 1em;
+}
+@media (max-width: 768px) {
+  
+  .shop {
+    gap: 0;
+  }
+  .products{
+    gap: 0;
+    padding: 0;
+  }
+  .produit {
+    padding: 1.5em;
+    margin: 1em;
+  }
+  .produit-image {
+    height: 270px;
+  }
 }

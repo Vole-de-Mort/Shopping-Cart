@@ -154,3 +154,40 @@
 .box > a:hover {
   box-shadow: 2px 3px 3px gray;
 }
+
+@media (max-width: 768px) {
+  .cart {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+  .items {
+    gap: 0.5em;
+  }
+  .item {
+    flex-direction: column;
+    padding-bottom: 1em;
+  }
+  .produit-image-cart {
+    border-right: 0;
+    border-bottom: 1px solid #ddd;
+  }
+  .item-title {
+    font-size: 1em;
+  }
+  .price {
+    font-size: 1.1em;
+  }
+  .subContainer > * {
+    padding: 0.8em;
+  }
+  .quantity {
+    width: 30%;
+  }
+  .recette {
+    font-size: 1.4em;
+  }
+  .sideBtn, .cartBtns > button { 
+    font-size: 1em;
+  }
+}
