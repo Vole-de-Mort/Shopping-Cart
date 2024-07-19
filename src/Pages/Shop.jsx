@@ -25,11 +25,6 @@ const Shop = () => {
       <Loading />
     );
   }
-  console.log(products);
-  if (existingProduct) {
-    console.log('Product already exists in the cart');
-    //class should be added for coloring purposes
-  }
   return (
     <>
       <div className='shop'>

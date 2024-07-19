@@ -4,8 +4,7 @@ export default function ErrorPage() {
     <>
       <p>404 - URL not Found</p>
       <p>
-        {' '}
-        <b>Oops !</b> Something went wrong{' '}
+        <b>Oops !</b> Something went wrong
       </p>
       <p>
         <Link to='/'>Back to your home sweet home</Link>

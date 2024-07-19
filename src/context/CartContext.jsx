@@ -13,10 +13,8 @@ export const CartProvider = ({ children }) => {
   const addToCart = (product) => {
     const existe = cart.find((item) => item.id === product.id);
     if (existe) {
-      console.log('quantity should increase');
       setExiste(true);
     } else {
-      console.log('Product added');
       setCart((prevCart) => [...prevCart, product]);
       IncreasingPieceNumber((q) => q + 1);
     }

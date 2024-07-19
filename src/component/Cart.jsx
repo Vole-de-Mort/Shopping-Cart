@@ -2,10 +2,13 @@ import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 import Recette from './Recette';
+import ShoppingBtn from '../component/ShoppingBtn';
+import '../styles/Cart.css';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Cart() {
   const [visible, setVisible] = useState(true);
-  // const [totalPrice, setTotalPrice] = useState(0);
+  const [emtyCart, setEmptyCart] = useState(true);
   const { cart, pieceNumber, removeFromCart, cleanCart } =
     useContext(CartContext);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -22,7 +25,6 @@ export default function Cart() {
       ...prevCounts,
       [id]: prevCounts[id] + 1,
     }));
-    //setTotalPrice((prevPrice) => prevPrice + item.price);
   };
 
   const handleDecrement = (id) => {
@@ -40,8 +42,10 @@ export default function Cart() {
   useEffect(() => {
     if (cart.length === 0) {
       setVisible(false);
+      setEmptyCart(true);
     } else {
       setVisible(true);
+      setEmptyCart(false);
     }
 
     const total = cart.reduce((sum, item) => {
@@ -50,47 +54,96 @@ export default function Cart() {
     setTotalPrice(total);
   }, [cart, itemCounts]);
 
+  if (emtyCart) {
+    return (
+      <div className='box'>
+        <div>No items in your cart yet !</div>
+        <Link to='/shop'>
+          <ShoppingBtn text='Shop Now' Class='asd' />
+        </Link>
+      </div>
+    );
+  }
+
   return (
-    <div className='cart'>
-      <h1>Cart</h1>
-      <div className='items'>
+    <div className='cart'key={uuidv4()}>
+      <div className='items'key={uuidv4()}>
         {cart.map((item) => {
           return (
             <>
               <div key={item.id} className='item'>
-                <img src={item.image} alt="" />
+                <div
+                  key={uuidv4()}
+                  className='produit-image-cart'
+                  style={{ backgroundImage: `url(${item.image})` }}
+                ></div>
+                <div className='sous-container' key={uuidv4()}>
+                  <div className='item-title' key={uuidv4()}>
+                    {item.title}
+                  </div>
+                  <div className='price' key={uuidv4()}>
+                    {sumItem(item.id).toFixed(2)}$
+                  </div>
+                  <div className='subContainer' key={uuidv4()}>
+                    <div className='quantity' key={uuidv4()}>
+                      <button
+                        key={uuidv4()}
+                        type='button'
+                        onClick={() => handleDecrement(item.id)}
+                      >
+                        -
+                      </button>
+                      <div id={item.id} className='q' key={uuidv4()}>
+                        {itemCounts[item.id]}
+                      </div>
+                      <button
+                        key={uuidv4()}
+                        type='button'
+                        onClick={() => handleIncrement(item)}
+                      >
+                        +
+                      </button>
+                    </div>
 
-                <div className='quantity'>
-                  <button
-                    type='button'
-                    onClick={() => handleDecrement(item.id)}
-                  >
-                    -
-                  </button>
-                  <div id={item.id}>{itemCounts[item.id]}</div>
-                  <button type='button' onClick={() => handleIncrement(item)}>
-                    +
-                  </button>
+                    <div
+                      key={uuidv4()}
+                      className='removeBtn'
+                      onClick={() => removeFromCart(item.id)}
+                    >
+                      Remove
+                    </div>
+                  </div>
                 </div>
-                <div className='price'>{sumItem(item.id)}$</div>
-                <button type='button' onClick={() => removeFromCart(item.id)}>
-                  Remove
-                </button>
               </div>
             </>
           );
         })}
       </div>
-      <div className='itemsSelected'>items selected : {pieceNumber}</div>
-      <Link to='/shop'>Keep Shopping</Link>
+      <div className='sidePanel'>
+        <div className='itemsSelected'>{pieceNumber} items</div>
+        <Recette totalPrice={totalPrice} />
+        <div className='cartBtns'>
+          <a
+            href='https://i1.sndcdn.com/artworks-000136269787-emjhqq-t500x500.jpg'
+            target='_blank'
+          >
+            <ShoppingBtn text='Check out' Class='sideBtn checkOut' />
+          </a>
 
-      {visible && (
-        <button type='button' className='hidden' onClick={cleanCart}>
-          Clear Cart
-        </button>
-      )}
-
-      <Recette text='helo' totalPrice={totalPrice} />
+          <Link to='/shop'>
+            <ShoppingBtn text='Keep Shopping' Class='keepShoppingBtn sideBtn' />
+          </Link>
+          {visible && (
+            <button
+              type='button'
+              className='hidden sideBtn'
+              onClick={cleanCart}
+            >
+              Clear Cart
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

@@ -11,6 +11,7 @@
   padding: 10px; /* Padding for aesthetics */
   z-index: 2;
   font-size: 1.5em;
+   border-bottom: 2px solid gray;
 }
 .name > a {
   font-size: 1.5em;
@@ -54,23 +55,4 @@
 
 .links li > a:hover::after {
   opacity: 1;
-}
-
-/* this is concerning component/Products */
-
-/* this is concerning component/Cart.jsx */
-
-.items {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3em;
-}
-.item {
-  border: 1px solid red;
-  display: flex;
-  flex-direction: column;
-}
-.quantity {
-  border: 1px solid black;
-  display: flex;
 }
