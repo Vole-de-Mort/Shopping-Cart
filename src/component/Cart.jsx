@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 export default function Cart() {
   const [visible, setVisible] = useState(true);
   const [emtyCart, setEmptyCart] = useState(true);
-  const { cart, pieceNumber, removeFromCart, cleanCart } =
+  const { cart, removeFromCart, cleanCart } =
     useContext(CartContext);
   const [totalPrice, setTotalPrice] = useState(0);
   const [itemCounts, setItemCounts] = useState(
@@ -120,7 +120,6 @@ export default function Cart() {
         })}
       </div>
       <div className='sidePanel'>
-        <div className='itemsSelected'>{pieceNumber} items</div>
         <Recette totalPrice={totalPrice} />
         <div className='cartBtns'>
           <a

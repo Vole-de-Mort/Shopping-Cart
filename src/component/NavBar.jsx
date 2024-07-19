@@ -1,6 +1,9 @@
+import { useContext } from 'react';
+import { CartContext } from '../context/CartContext';
 import '../styles/NavBar.css';
 import { Link } from 'react-router-dom';
 export default function NavBar() {
+  const { pieceNumber } = useContext(CartContext);
   return (
     <div className='navBar'>
       <div className='name'> 
@@ -15,7 +18,7 @@ export default function NavBar() {
             <Link to='/shop'>Shop</Link>
           </li>
           <li>
-            <Link to='/cart'>Cart</Link>
+            <Link to='/cart'>Cart({pieceNumber})</Link>
           </li>
         </ul>
       </div>
